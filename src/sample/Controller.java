@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
+import java.util.InputMismatchException;
 import java.util.Random;
 
 public class Controller {
@@ -14,16 +15,23 @@ public class Controller {
     @FXML
     private Label answerLabel;
 
-    public void tryMe (ActionEvent event){
+    public void tryMe(ActionEvent event) {
         Random rnd = new Random();
         int rndNumber = rnd.nextInt(10) + 1;
-        int guessNumber = Integer.valueOf(inputNumber.getText());
-        if (rndNumber == guessNumber) {
-            answerLabel.setText("Jusu spejimas buvo teisingas, generuotas skaicius:" +rndNumber +" Jusu spejimas buvo: "+ guessNumber );
+        try {
 
-        }else {
-            answerLabel.setText("Neatspejote, generuotas skaicius: " +rndNumber+ " Jusu skaicius: " +guessNumber);
 
+            int guessNumber = Integer.valueOf(inputNumber.getText());
+            inputNumber.setText("");
+            if (rndNumber == guessNumber) {
+                answerLabel.setText("Jusu spejimas buvo teisingas, generuotas skaicius:" + rndNumber + " Jusu spejimas buvo: " + guessNumber);
+
+
+            } else {
+                answerLabel.setText("Neatspejote, generuotas skaicius: " + rndNumber + " Jusu skaicius: " + guessNumber);
+
+            }
+        } catch (InputMismatchException e) {
         }
     }
 }
