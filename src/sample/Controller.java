@@ -2,6 +2,7 @@ package sample;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
@@ -31,7 +32,11 @@ public class Controller {
                 answerLabel.setText("Neatspejote, generuotas skaicius: " + rndNumber + " Jusu skaicius: " + guessNumber);
 
             }
-        } catch (InputMismatchException e) {
+        } catch (NumberFormatException e) {
+            inputNumber.setText("");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Ka cia Baka darai");
+            alert.show();
         }
     }
 }
