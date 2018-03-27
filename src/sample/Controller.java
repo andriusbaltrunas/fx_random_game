@@ -19,9 +19,11 @@ public class Controller {
         int rndNumber = rnd.nextInt(10) + 1;
         int guessNumber = Integer.valueOf(inputNumber.getText());
         if (rndNumber == guessNumber) {
-            System.out.println("Jus atspejote, tai buvo " + guessNumber);
+            answerLabel.setText("Jusu spejimas buvo teisingas, generuotas skaicius:" +rndNumber +" Jusu spejimas buvo: "+ guessNumber );
+
         }else {
-            System.out.println("Spekite dar karta");
+            answerLabel.setText("Neatspejote, generuotas skaicius: " +rndNumber+ " Jusu skaicius: " +guessNumber);
+
         }
     }
 }
